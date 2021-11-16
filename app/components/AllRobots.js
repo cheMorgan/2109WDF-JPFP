@@ -12,16 +12,19 @@ export class AllRobots extends React.Component {
   render() {
     const { robots } = this.props;
     return (
-      <div className="thing-container">
-        {robots.map((robot) => (
-          <div className="oneBot">
-            <h1>{robot.name}</h1>
-            <p>number of projects</p>
-            <p>{robot.fuelType}</p>
-            <p>{robot.fuelLevel}</p>
-            <img src={robot.imageUrl} />
-          </div>
-        ))}
+      <div>
+        <h1 className="title">All Robots</h1>
+        <div className="thing-container">
+          {robots.map((robot) => (
+            <div className="oneBot">
+              <h1>{robot.name}</h1>
+              <p>number of projects</p>
+              <p>{robot.fuelType}</p>
+              <p>{robot.fuelLevel}</p>
+              <img src={robot.imageUrl} />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

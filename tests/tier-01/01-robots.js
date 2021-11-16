@@ -51,7 +51,7 @@ describe("Tier One: Robots", () => {
     mockAxios.onGet("/api/robots").replyOnce(200, robots);
   });
 
-  xdescribe("<AllRobots /> component", () => {
+  describe("<AllRobots /> component", () => {
     const getRobotsSpy = sinon.spy();
     afterEach(() => {
       getRobotsSpy.resetHistory();
@@ -105,7 +105,7 @@ describe("Tier One: Robots", () => {
       ]);
     });
 
-    it('*** renders "No Robots" if this.props.robots is empty or undefined', () => {
+    xit('*** renders "No Robots" if this.props.robots is empty or undefined', () => {
       throw new Error("replace this error with your own test");
     });
 
@@ -120,7 +120,7 @@ describe("Tier One: Robots", () => {
     });
   });
 
-  xdescribe("Redux", () => {
+  describe("Redux", () => {
     let fakeStore;
     beforeEach(() => {
       fakeStore = mockStore(initialState);
@@ -153,7 +153,7 @@ describe("Tier One: Robots", () => {
         testStore = createStore(appReducer);
       });
 
-      it("*** returns the initial state by default", () => {
+      xit("*** returns the initial state by default", () => {
         throw new Error("replace this error with your own test");
       });
 
@@ -170,7 +170,7 @@ describe("Tier One: Robots", () => {
     });
   });
 
-  xdescribe("Connect: react-redux", () => {
+  describe("Connect: react-redux", () => {
     // This test is expecting your component to dispatch a thunk after it mounts
     // Remember that getRobots prop from an earlier test? Now's a good time
     // for a mapDispatch.
@@ -211,7 +211,7 @@ describe("Tier One: Robots", () => {
     });
   });
 
-  xdescribe("Navigation", () => {
+  describe("Navigation", () => {
     beforeEach(() => {
       sinon.stub(rrd, "BrowserRouter").callsFake(({ children }) => {
         return <div>{children}</div>;
@@ -235,12 +235,12 @@ describe("Tier One: Robots", () => {
       expect(wrapper.find(AllProjects)).to.have.length(0);
     });
 
-    it('*** navbar has links to "/robots" and "/" (homepage)', () => {
+    xit('*** navbar has links to "/robots" and "/" (homepage)', () => {
       throw new Error("replace this error with your own test");
     });
   });
 
-  xdescribe("Express API", () => {
+  describe("Express API", () => {
     // Let's test our Express routes WITHOUT actually using the database.
     // By replacing the findAll methods on our Sequelize models with a spy,
     // we can ensure that our API tests won't fail just because

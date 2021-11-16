@@ -27,3 +27,28 @@ addRobots,
 removeRobot,
 removeRobots,
 createRobot
+
+## Robot Object
+
+{
+"id": 1,
+"name": "Rodney Copperbottom",
+"fuelType": "electric",
+"fuelLevel": 100,
+"imageUrl": "https://static.wikia.nocookie.net/parody/images/8/89/Profile_-_Rodney_Copperbottom.png/revision/latest/scale-to-width-down/178?cb=20210131010513",
+"createdAt": "2021-11-16T16:54:06.897Z",
+"updatedAt": "2021-11-16T16:54:06.897Z"
+},
+
+## Project Object
+
+{
+"id": 1,
+"title": "wonderbot",
+"deadline": "2021-11-21T05:00:00.000Z",
+"priority": 10,
+"completed": false,
+"description": "It has four kitchen spoons atop its head, which it uses like the blades on a helicopter to fly. Its head is protected by a large cup, with its two eyes peeking out from underneath. It has a small, fragile neck, with a tiny body protected by a small bowl. It also possess three long, wiry limbs which can be used as hands or to create pictures for visual communication.",
+"createdAt": "2021-11-16T16:54:06.916Z",
+"updatedAt": "2021-11-16T16:54:06.916Z"
+},

@@ -23,6 +23,7 @@ nav {
   display: flex;
   height: 80px;
   padding: 10px;
+  justify-content: space-around;
 }
 
 main {
@@ -30,4 +31,22 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.links {
+  color: white;
+}
+
+.allBots {
+  display: flex;
+  flex-wrap: wrap;
+}
+.oneBot {
+  padding: 10px;
+  background-color: rgb(199, 198, 198);
+  margin: 20px;
+}
+
+img {
+  size: 10px;
 }

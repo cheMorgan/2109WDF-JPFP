@@ -35,7 +35,7 @@ createRobot
 "name": "Rodney Copperbottom",
 "fuelType": "electric",
 "fuelLevel": 100,
-"imageUrl": "https://static.wikia.nocookie.net/parody/images/8/89/Profile_-_Rodney_Copperbottom.png/revision/latest/scale-to-width-down/178?cb=20210131010513",
+"imageUrl": "",
 "createdAt": "2021-11-16T16:54:06.897Z",
 "updatedAt": "2021-11-16T16:54:06.897Z"
 },

@@ -8,12 +8,12 @@ const seed = async () => {
     const rodney = await Robot.create({
       name: "Rodney Copperbottom",
       imageUrl:
-        "https://static.wikia.nocookie.net/parody/images/8/89/Profile_-_Rodney_Copperbottom.png/revision/latest/scale-to-width-down/178?cb=20210131010513",
+        "https://images.hobbydatabase.com/processed_uploads/subject_photo/subject_photo/image/40953/1530553596-21011-5791/Rodney_Copperbottom_large.jpg",
     });
     const piper = await Robot.create({
       name: "Piper Pinwheeler",
       imageUrl:
-        "https://static.wikia.nocookie.net/robotcity/images/b/b2/Piper.jpg/revision/latest/top-crop/width/360/height/450?cb=20111228074058",
+        "https://www.giantbomb.com/a/uploads/square_small/46/462814/3183153-8077979037-latest",
     });
     const bigweld = await Robot.create({
       name: "Bigweld",

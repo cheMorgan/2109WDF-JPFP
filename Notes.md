@@ -52,3 +52,8 @@ createRobot
 "createdAt": "2021-11-16T16:54:06.916Z",
 "updatedAt": "2021-11-16T16:54:06.916Z"
 },
+
+11/17/21 3:06pm. After chipping away at the same thing for 3 hours, I have experienced the bane of every programmer's existence: I was calling the wrong function.
+3:17 pm Wtf how can I go from staring at something for 3 hours to finally saying "You know what? It does this. I don't want it to do this. So instead I'll do this" and it actually freaking works gaosjiajdioajsdk
+
+- Aka moved setSingleRobot to the single robot component so that the allrobots ONLY takes care of all robots. Makes sense on paper, doesn't it?

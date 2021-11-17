@@ -24,7 +24,7 @@ const initialState = [];
 export default function robotsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_ROBOTS:
-      return [...state, ...action.robots];
+      return action.robots;
     default:
       return state;
   }

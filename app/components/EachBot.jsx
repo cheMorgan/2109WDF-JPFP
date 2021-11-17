@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const EachBot = (props) => {
-  const { robot, handleClick } = props;
+  const { robot } = props;
   return (
     <div className="oneBot">
       {/* <h1>{robot.name}</h1> */}

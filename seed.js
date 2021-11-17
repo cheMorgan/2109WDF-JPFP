@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 const { green, red } = require("chalk");
 const { db, Project, Robot } = require("./server/db");
 

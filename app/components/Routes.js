@@ -4,6 +4,7 @@ import AllRobots from "./AllRobots";
 import AllProjects from "./AllProjects";
 import Nav from "./Nav.jsx";
 import Main from "./Main";
+import SingleRobot from "./SingleRobot";
 
 const Routes = () => {
   return (
@@ -12,7 +13,8 @@ const Routes = () => {
         <Nav />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route path="/robots" component={AllRobots} />
+          <Route exact path="/robots" component={AllRobots} />
+          <Route path="/robots/:id" component={SingleRobot} />
           <Route path="/projects" component={AllProjects} />
         </Switch>
       </div>

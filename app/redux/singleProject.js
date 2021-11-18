@@ -1,6 +1,7 @@
 import Axios from "axios";
 
 const SET_PROJECT = "SET_PROJECT";
+
 export const setProject = (project) => {
   return {
     type: SET_PROJECT,

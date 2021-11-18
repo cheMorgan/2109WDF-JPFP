@@ -4,6 +4,8 @@ import Axios from "axios";
 const SET_PROJECTS = "SET_PROJECTS";
 const CREATE_PROJECT = "CREATE_PROJECT";
 const DELETE_PROJECT = "DELETE_PROJECT";
+const UPDATE_PROJECT = "UPDATE_PROJECT";
+
 const setProjects = (projects) => {
   return {
     type: SET_PROJECTS,
@@ -16,6 +18,14 @@ const _createProject = (project) => {
     project,
   };
 };
+
+const _updateProject = (project) => {
+  return {
+    type: UPDATE_PROJECT,
+    project,
+  };
+};
+
 const _deleteProject = (id) => {
   return {
     type: DELETE_PROJECT,
@@ -31,6 +41,16 @@ export const fetchProjects = () => {
     } catch (err) {
       console.error(err);
     }
+  };
+};
+
+export const updateProject = (project) => {
+  return async (dispatch) => {
+    const { data: updated } = await Axios.put(
+      `/api/projects/${project.id}`,
+      project
+    );
+    dispatch(_updateProject(updated));
   };
 };
 
@@ -67,6 +87,10 @@ export default function projectsReducer(state = initialState, action) {
       return action.projects;
     case CREATE_PROJECT:
       return [...state, action.project];
+    case UPDATE_PROJECT:
+      return state.map((project) =>
+        project.id === action.project.id ? action.project : project
+      );
     case DELETE_PROJECT:
       return state.filter((project) => project.id !== action.id);
     default:

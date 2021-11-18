@@ -4,6 +4,7 @@ import Axios from "axios";
 const SET_ROBOTS = "SET_ROBOTS";
 const CREATE_ROBOT = "CREATE_ROBOT";
 const DELETE_ROBOT = "DELETE_ROBOT";
+const UPDATE_ROBOT = "UPDATE_ROBOT";
 
 export const setRobots = (robots) => {
   return {
@@ -23,6 +24,13 @@ const _deleteRobot = (id) => {
   return {
     type: DELETE_ROBOT,
     id,
+  };
+};
+
+const _updateRobot = (robot) => {
+  return {
+    type: UPDATE_ROBOT,
+    robot,
   };
 };
 
@@ -48,6 +56,13 @@ export const createRobot = (robot, history) => {
   };
 };
 
+export const updateRobot = (robot) => {
+  return async (dispatch) => {
+    const { data: updated } = await Axios.put(`/api/robots/${robot.id}`, robot);
+    dispatch(_updateRobot(updated));
+  };
+};
+
 export const deleteRobot = (id, history) => {
   return async (dispatch) => {
     try {
@@ -70,6 +85,10 @@ export default function robotsReducer(state = initialState, action) {
       return [...state, action.robot];
     case DELETE_ROBOT:
       return state.filter((robot) => robot.id !== action.id);
+    case UPDATE_ROBOT:
+      return state.map((robot) =>
+        robot.id === action.robot.id ? action.robot : robot
+      );
     default:
       return state;
   }

@@ -9,15 +9,24 @@ class SingleProject extends React.Component {
     this.props.setProject(+this.props.match.params.id);
   }
   render() {
-    const { title, deadline, priority, description, robots } =
-      this.props.project;
-    console.log(this.props);
+    const { title, deadline, priority, description } = this.props.project;
+    const robots = this.props.project.robots || [];
+    console.log("Inside single-project", this.props.project.robots);
     return (
-      <div className="single-project">
-        <h1>{title}</h1>
-        <p>{deadline}</p>
-        <p>{priority}</p>
-        <p>{description}</p>
+      <div>
+        <div className="single-project">
+          <h1>{title}</h1>
+          <p>{deadline}</p>
+          <p>{priority}</p>
+          <p>{description}</p>
+        </div>
+        <div className="single-project-robots">
+          {robots.length === 0 ? (
+            <p>There's no one on this! Fix it!</p>
+          ) : (
+            robots.map((robot) => <p key={robot.id}>{robot.name}</p>)
+          )}
+        </div>
       </div>
     );
   }

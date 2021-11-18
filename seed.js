@@ -36,6 +36,10 @@ const seed = async () => {
       description: "ehhh make em look better",
     });
     //END OF SEED DATA
+
+    await piper.setProjects(wonderbot);
+    await rodney.setProjects(wonderbot, upgrades);
+    await bigweld.setProjects(upgrades);
   } catch (err) {
     console.log(red(err));
   }

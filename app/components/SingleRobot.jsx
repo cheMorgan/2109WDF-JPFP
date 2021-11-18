@@ -10,17 +10,27 @@ class SingleRobot extends React.Component {
   render() {
     console.log(this.props);
     const { robot } = this.props;
+    const projects = robot.projects || [];
     return (
-      <div id="single-robot">
-        <img src={robot.imageUrl} />
-        <h1>{robot.name}</h1>
-        <p>{robot.fuelType}</p>
-        <p>{robot.fuelLevel}</p>
+      <div>
+        <div id="single-robot">
+          <img src={robot.imageUrl} />
+          <h1>{robot.name}</h1>
+          <p>{robot.fuelType}</p>
+          <p>{robot.fuelLevel}</p>
+        </div>
+        <div className="single-robot-projects">
+          {projects.length === 0 ? (
+            <p>Give this bot some work!</p>
+          ) : (
+            projects.map((project) => <p key={project.id}>{project.title}</p>)
+          )}
+        </div>
       </div>
     );
   }
 }
-
+// If robot has no projects, put the link to add?
 const mapState = (state) => {
   return {
     robot: state.singleRobot,

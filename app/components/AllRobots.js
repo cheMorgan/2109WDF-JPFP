@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchRobots } from "../redux/robots";
+import { deleteRobot, fetchRobots } from "../redux/robots";
 import { fetchSingleRobot } from "../redux/singleRobot";
 import EachBot from "./EachBot";
 import SingleRobot from "./SingleRobot";
@@ -13,12 +13,16 @@ export class AllRobots extends React.Component {
   constructor() {
     super();
     this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   componentDidMount() {
     this.props.setRobots();
   }
   handleClick(id) {
     this.props.setRobot(id);
+  }
+  handleDelete(id) {
+    this.props.deleteRobot(id);
   }
 
   render() {
@@ -28,11 +32,13 @@ export class AllRobots extends React.Component {
         <h1 className="title">All Robots</h1>
         <div className="thing-container">
           {robots.map((robot) => (
-            <EachBot
-              key={robot.id}
-              robot={robot}
-              handleClick={this.handleClick}
-            />
+            <div key={robot.id}>
+              <EachBot
+                robot={robot}
+                handleClick={this.handleClick}
+                handleDelete={this.handleDelete}
+              />
+            </div>
           ))}
           <Link to="/robots/add">Add a robot</Link>
         </div>
@@ -52,6 +58,7 @@ const mapDispatch = (dispatch) => {
   return {
     setRobots: () => dispatch(fetchRobots()),
     setRobot: (id) => dispatch(fetchSingleRobot(id)),
+    deleteRobot: (id) => dispatch(deleteRobot(id)),
   };
 };
 

@@ -26,8 +26,7 @@ const Robot = db.define("robot", {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue:
-      "https://static.wikia.nocookie.net/pixar/images/d/de/Wall%E2%80%A2e_clipped_rev_1.png/revision/latest?cb=20170807223723",
+    defaultValue: "https://scx2.b-cdn.net/gfx/news/2019/3-robot.jpg",
   },
 });
 

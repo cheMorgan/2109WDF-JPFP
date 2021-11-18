@@ -11,6 +11,13 @@ const EachBot = (props) => {
       <p>{robot.fuelType}</p>
       <p>{robot.fuelLevel}</p>
       <img src={robot.imageUrl} />
+      <button
+        className="delete-button"
+        type="button"
+        onClick={() => props.handleDelete(robot.id)}
+      >
+        X
+      </button>
     </div>
   );
 };

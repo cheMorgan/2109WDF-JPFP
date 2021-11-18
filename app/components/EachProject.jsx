@@ -7,6 +7,13 @@ const EachProject = (props) => {
     <div className="oneProject">
       <Link to={`/projects/${project.id}`}>{project.title}</Link>
       <p>deadline: {project.deadline}</p>
+      <button
+        className="delete-button"
+        type="button"
+        onClick={() => props.handleDelete(project.id)}
+      >
+        X
+      </button>
     </div>
   );
 };

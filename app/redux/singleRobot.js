@@ -24,7 +24,7 @@ export const unassign = (robot, history) => {
         `/api/robots/${robot.id}`,
         robot
       );
-      dispatch(_unassign(robot));
+      dispatch(_unassign(updated));
       history.push(`/robots/${robot.id}`);
     } catch (err) {
       console.error(err);
@@ -55,6 +55,7 @@ export default function singleRobotReducer(state = initialState, action) {
       );
       action.robot.projects = newArr;
       return action.robot;
+
     default:
       return state;
   }

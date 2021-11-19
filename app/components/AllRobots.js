@@ -5,6 +5,7 @@ import { fetchSingleRobot } from "../redux/singleRobot";
 import EachBot from "./EachBot";
 import SingleRobot from "./SingleRobot";
 import { Link } from "react-router-dom";
+import ProjectUpdateForm from "./ProjectUpdateForm";
 
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very

@@ -18,8 +18,6 @@ class Form extends React.Component {
   }
   handleSubmit(evt) {
     evt.preventDefault();
-    console.log(this.state);
-    console.log(this.props);
     this.props.sendToDb({ ...this.state }); // without the braces, won't work; need to explicitly send an obj
   }
   render() {

@@ -7,18 +7,11 @@ import ProjectsAssignedTo from "./ProjectsAssignedTo";
 import RobotUpdateForm from "./RobotUpdateForm";
 
 class SingleRobot extends React.Component {
-  constructor() {
-    super();
-    this.handle = this.handle.bind(this);
-  }
   componentDidMount() {
     this.props.setRobot(+this.props.match.params.id);
   }
-  handle(evt) {
-    console.log("event target inside handle click", evt.target);
-  }
+
   render() {
-    console.log(this.props);
     const { robot } = this.props;
     const projects = robot.projects || [];
     return (
@@ -39,7 +32,6 @@ class SingleRobot extends React.Component {
                 project={project}
                 robot={robot}
                 key={project.id}
-                handleClick={this.handle}
               />
             ))
           )}

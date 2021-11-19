@@ -4,7 +4,7 @@ import Axios from "axios";
 const SET_PROJECTS = "SET_PROJECTS";
 const CREATE_PROJECT = "CREATE_PROJECT";
 const DELETE_PROJECT = "DELETE_PROJECT";
-const UPDATE_PROJECT = "UPDATE_PROJECT";
+export const UPDATE_PROJECT = "UPDATE_PROJECT";
 
 const setProjects = (projects) => {
   return {
@@ -44,20 +44,24 @@ export const fetchProjects = () => {
   };
 };
 
-export const updateProject = (project) => {
+export const updateProject = (project, history) => {
   return async (dispatch) => {
-    const { data: updated } = await Axios.put(
-      `/api/projects/${project.id}`,
-      project
-    );
-    dispatch(_updateProject(updated));
+    try {
+      const { data: updated } = await Axios.put(
+        `/api/projects/${project.id}`,
+        project
+      );
+      dispatch(_updateProject(updated));
+      history.push(`/projects/${project.id}`);
+    } catch (error) {
+      console.error(error);
+    }
   };
 };
 
 export const createProject = (project, history) => {
   return async (dispatch) => {
     try {
-      console.log(project);
       const { data: created } = await Axios.post("/api/projects", project);
       dispatch(_createProject(created));
       history.push("/projects");

@@ -16,13 +16,13 @@ class RobotUpdateForm extends React.Component {
   componentDidMount() {
     this.props.setRobot(+this.props.match.params.id);
   }
-  componentDidUpdate(props) {
-    if (props.robot.id !== this.props.robot.id) {
-      this.setState({
-        ...this.props.robot,
-      });
-    }
-  }
+  // componentDidUpdate(props) {
+  //   if (props.robot.id !== this.props.robot.id) {
+  //     this.setState({
+  //       ...this.props.robot,
+  //     });
+  //   }
+  // }
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value,
@@ -37,7 +37,7 @@ class RobotUpdateForm extends React.Component {
     const { handleChange, handleSubmit } = this;
     return (
       <div className="form">
-        <form id="new-robot-form" onSubmit={handleSubmit}>
+        <form id="robot-update-form" onSubmit={handleSubmit}>
           <label htmlFor="robotName">Name: </label>
           <input name="name" value={name} onChange={handleChange} />
           <input name="fuelLevel" value={fuelLevel} onChange={handleChange} />

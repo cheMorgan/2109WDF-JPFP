@@ -1,5 +1,6 @@
 /* eslint-disable quotes */
 import Axios from "axios";
+import { setRobot } from "./singleRobot";
 
 const SET_ROBOTS = "SET_ROBOTS";
 const CREATE_ROBOT = "CREATE_ROBOT";
@@ -56,10 +57,12 @@ export const createRobot = (robot, history) => {
   };
 };
 
-export const updateRobot = (robot) => {
+export const updateRobot = (robot, history) => {
   return async (dispatch) => {
+    console.log("Inside reducer", robot.id);
     const { data: updated } = await Axios.put(`/api/robots/${robot.id}`, robot);
     dispatch(_updateRobot(updated));
+    history.push(`/robots/${robot.id}`);
   };
 };
 

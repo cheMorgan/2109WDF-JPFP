@@ -1,6 +1,7 @@
 import Axios from "axios";
 
 const SET_PROJECT = "SET_PROJECT";
+const UNASSIGN = "UNASSIGN";
 
 export const setProject = (project) => {
   return {

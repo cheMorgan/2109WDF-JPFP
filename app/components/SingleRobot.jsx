@@ -1,11 +1,21 @@
 // when navigating to /robots/:id
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchSingleRobot } from "../redux/singleRobot";
+import ProjectsAssignedTo from "./ProjectsAssignedTo";
+import RobotUpdateForm from "./RobotUpdateForm";
 
 class SingleRobot extends React.Component {
+  constructor() {
+    super();
+    this.handle = this.handle.bind(this);
+  }
   componentDidMount() {
     this.props.setRobot(+this.props.match.params.id);
+  }
+  handle(evt) {
+    console.log("event target inside handle click", evt.target);
   }
   render() {
     console.log(this.props);
@@ -23,9 +33,18 @@ class SingleRobot extends React.Component {
           {projects.length === 0 ? (
             <p>Give this bot some work!</p>
           ) : (
-            projects.map((project) => <p key={project.id}>{project.title}</p>)
+            projects.map((project) => (
+              <ProjectsAssignedTo
+                history={this.props.history}
+                project={project}
+                robot={robot}
+                key={project.id}
+                handleClick={this.handle}
+              />
+            ))
           )}
         </div>
+        <Link to={`/robots/update/${robot.id}`}>Update</Link>
       </div>
     );
   }

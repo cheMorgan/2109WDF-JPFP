@@ -17,7 +17,7 @@ class SingleRobot extends React.Component {
     return (
       <div>
         <div id="single-robot">
-          <img src={robot.imageUrl} />
+          <img src={robot.imageUrl} className="robot-image" />
           <h1>{robot.name}</h1>
           <p>{robot.fuelType}</p>
           <p>{robot.fuelLevel}</p>

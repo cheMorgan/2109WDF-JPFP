@@ -15,15 +15,20 @@ export class AllRobots extends React.Component {
     super();
     this.handleClick = this.handleClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.addRobotsButton = this.addRobotsButton.bind(this);
   }
   componentDidMount() {
     this.props.setRobots();
+    console.log("Props inside all robots", this.props);
   }
   handleClick(id) {
     this.props.setRobot(id);
   }
   handleDelete(id) {
     this.props.deleteRobot(id);
+  }
+  addRobotsButton() {
+    this.props.history.push("/robots/add");
   }
 
   render() {
@@ -41,7 +46,13 @@ export class AllRobots extends React.Component {
               />
             </div>
           ))}
-          <Link to="/robots/add">Add a robot</Link>
+          <button
+            type="button"
+            className="add-button"
+            onClick={this.addRobotsButton}
+          >
+            Add Robot
+          </button>
         </div>
       </div>
     );

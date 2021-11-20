@@ -7,6 +7,9 @@ class Form extends React.Component {
     super();
     this.state = {
       title: "",
+      deadline: "",
+      priority: 0,
+      description: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -23,11 +26,36 @@ class Form extends React.Component {
   render() {
     const { title } = this.state;
     const { handleChange, handleSubmit } = this;
+    console.log(this.state);
     return (
       <div className="form">
         <form id="form" onSubmit={handleSubmit}>
           <label htmlFor="project-title">Project title:</label>
           <input name="title" value={title} onChange={handleChange} />
+          <label hmtlFor="deadline">Deadline</label>
+          <input
+            type="date"
+            name="deadline"
+            value={this.state.deadline}
+            min="2021-11-19"
+            onChange={handleChange}
+          />
+          <label htmlFor="priority">Priority (1-10):</label>
+          <input
+            type="number"
+            name="priority"
+            min="1"
+            max="10"
+            onChange={handleChange}
+          />
+          <label htmlFor="description">Project Description: </label>
+          <textarea
+            name="description"
+            rows="5"
+            cols="50"
+            maxLength="255"
+            onChange={handleChange}
+          />
           <button type="submit">Submit</button>
         </form>
       </div>

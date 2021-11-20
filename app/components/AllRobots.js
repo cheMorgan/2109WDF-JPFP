@@ -19,7 +19,6 @@ export class AllRobots extends React.Component {
   }
   componentDidMount() {
     this.props.setRobots();
-    console.log("Props inside all robots", this.props);
   }
   handleClick(id) {
     this.props.setRobot(id);
@@ -35,6 +34,13 @@ export class AllRobots extends React.Component {
     const { robots } = this.props;
     return (
       <div>
+        <button
+          type="button"
+          className="add-button"
+          onClick={this.addRobotsButton}
+        >
+          Add Robot
+        </button>
         <h1 className="title">All Robots</h1>
         <div className="thing-container">
           {robots.map((robot) => (
@@ -46,13 +52,6 @@ export class AllRobots extends React.Component {
               />
             </div>
           ))}
-          <button
-            type="button"
-            className="add-button"
-            onClick={this.addRobotsButton}
-          >
-            Add Robot
-          </button>
         </div>
       </div>
     );

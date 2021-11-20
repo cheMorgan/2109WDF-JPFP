@@ -2,20 +2,29 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchSingleRobot } from "../redux/singleRobot";
+import { fetchSingleRobot, unassign } from "../redux/singleRobot";
 import ProjectsAssignedTo from "./ProjectsAssignedTo";
 import RobotUpdateForm from "./RobotUpdateForm";
 
 class SingleRobot extends React.Component {
+  constructor(props) {
+    super(props);
+    this.unassignButton = this.unassignButton.bind(this);
+  }
   componentDidMount() {
     this.props.setRobot(+this.props.match.params.id);
+  }
+  unassignButton(id) {
+    const obj = { ...this.props.robot, projectId: id };
+    this.props.unassign(obj);
   }
 
   render() {
     const { robot } = this.props;
+    // console.log(robot);
     const projects = robot.projects || [];
     return (
-      <div>
+      <div id="robot-page">
         <div id="single-robot">
           <img src={robot.imageUrl} className="robot-image" />
           <h1>{robot.name}</h1>
@@ -27,12 +36,18 @@ class SingleRobot extends React.Component {
             <p>Give this bot some work!</p>
           ) : (
             projects.map((project) => (
-              <ProjectsAssignedTo
-                history={this.props.history}
-                project={project}
-                robot={robot}
-                key={project.id}
-              />
+              <div className="projects-assigned-to" key={project.id}>
+                <h1>{project.title}</h1>
+                <p>{project.completed}</p>
+                <p>{project.priority}</p>
+                <p>{project.description}</p>
+                <button
+                  type="button"
+                  onClick={() => this.unassignButton(project.id)}
+                >
+                  Unassign
+                </button>
+              </div>
             ))
           )}
         </div>
@@ -41,15 +56,24 @@ class SingleRobot extends React.Component {
     );
   }
 }
+{
+  /* <ProjectsAssignedTo
+  history={this.props.history}
+  project={project}
+  robot={robot}
+  key={project.id}
+/> */
+}
 // If robot has no projects, put the link to add?
 const mapState = (state) => {
   return {
     robot: state.singleRobot,
   };
 };
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
     setRobot: (id) => dispatch(fetchSingleRobot(id)),
+    unassign: (obj) => dispatch(unassign(obj, history)),
   };
 };
 

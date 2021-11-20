@@ -10,10 +10,11 @@ export const setRobot = (robot) => {
   };
 };
 
-export const _unassign = (robot) => {
+export const _unassign = (robot, prevBot) => {
   return {
     type: UNASSIGN,
     robot,
+    prevBot,
   };
 };
 
@@ -24,7 +25,9 @@ export const unassign = (robot, history) => {
         `/api/robots/${robot.id}`,
         robot
       );
-      dispatch(_unassign(updated));
+      console.log("robot", robot);
+      console.log("update", updated);
+      dispatch(_unassign(updated, robot));
       history.push(`/robots/${robot.id}`);
     } catch (err) {
       console.error(err);
@@ -50,12 +53,10 @@ export default function singleRobotReducer(state = initialState, action) {
     case SET_ROBOT:
       return action.robot;
     case UNASSIGN:
-      const newArr = state.projects.filter(
-        (project) => project.id !== action.robot.projectId
+      action.robot.projects = action.robot.projects.filter(
+        (project) => project.id !== action.prevBot.projectId
       );
-      action.robot.projects = newArr;
       return action.robot;
-
     default:
       return state;
   }

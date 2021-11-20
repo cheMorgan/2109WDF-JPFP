@@ -58,3 +58,5 @@ createRobot
 
 - Aka moved setSingleRobot to the single robot component so that the allrobots ONLY takes care of all robots. Makes sense on paper, doesn't it?
   What have I learned from this? Unless you're mapping, probably don't need to do nested renders. Probably
+
+// this.props.updateRobot({ ...this.state, id: +this.props.match.params.id }); // without the braces, won't work; need to explicitly send an obj

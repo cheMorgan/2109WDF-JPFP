@@ -7,10 +7,12 @@ const EachBot = (props) => {
   return (
     <div className="oneBot">
       {/* <h1>{robot.name}</h1> */}
-      <Link to={`/robots/${robot.id}`}>{robot.name}</Link>
-      <p>{robot.fuelType}</p>
-      <p>{robot.fuelLevel}</p>
-      <img src={robot.imageUrl} />
+      <div className="text-each-bot">
+        <Link to={`/robots/${robot.id}`}>{robot.name}</Link>
+        <p>{robot.fuelType}</p>
+        <p>{robot.fuelLevel}</p>
+      </div>
+      <img src={robot.imageUrl} className="image-each-bot" />
       <button
         className="delete-button"
         type="button"

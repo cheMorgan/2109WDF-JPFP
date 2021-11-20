@@ -60,6 +60,7 @@ export const createRobot = (robot, history) => {
 export const updateRobot = (robot, history) => {
   return async (dispatch) => {
     const { data: updated } = await Axios.put(`/api/robots/${robot.id}`, robot);
+
     dispatch(_updateRobot(updated));
     history.push(`/robots/${robot.id}`);
   };

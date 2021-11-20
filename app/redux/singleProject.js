@@ -60,12 +60,12 @@ export default function singleProjectReducer(state = initialState, action) {
       return action.project;
     case UPDATE_PROJECT:
       return action.project;
-    case UNASSIGN_PROJECT:
-      const newArr = state.robots.filter(
-        (robot) => robot.id !== action.project.robotId
-      );
-      action.project.robots = newArr;
-      return action.project;
+    // case UNASSIGN_PROJECT:
+    //   const newArr = state.robots.filter(
+    //     (robot) => robot.id !== action.project.robotId
+    //   );
+    //   action.project.robots = newArr;
+    //   return action.project;
     default:
       return state;
   }

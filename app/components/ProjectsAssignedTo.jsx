@@ -15,7 +15,7 @@ class ProjectsAssignedTo extends React.Component {
   }
   render() {
     const { project } = this.props;
-
+    console.log(this.props.robot, "Robot");
     return (
       <div className="projects-assigned-to">
         <h1>{project.title}</h1>

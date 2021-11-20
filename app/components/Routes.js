@@ -9,6 +9,7 @@ import SingleProject from "./SingleProject";
 import Form from "./Form";
 import NewRobotForm from "./NewRobotForm";
 import RobotUpdateForm from "./RobotUpdateForm";
+import ProjectForm from "./ProjectForm";
 
 const Routes = () => {
   return (
@@ -22,7 +23,7 @@ const Routes = () => {
           <Route exact path="/robots/update/:id" component={RobotUpdateForm} />
           <Route path="/robots/:id" component={SingleRobot} />
           <Route exact path="/projects" component={AllProjects} />
-          <Route path="/projects/add" component={Form} />
+          <Route path="/projects/add" component={ProjectForm} />
           <Route path="/projects/:id" component={SingleProject} />
         </Switch>
       </div>

@@ -4,10 +4,12 @@ import ProjectUpdateForm from "./ProjectUpdateForm";
 
 const EachProject = (props) => {
   const { project } = props;
+  const date = props.project.deadline || "";
+
   return (
     <div className="oneProject">
       <Link to={`/projects/${project.id}`}>{project.title}</Link>
-      <p>deadline: {project.deadline}</p>
+      <p>Deadline: {date.slice(0, 10)}</p>
       <button
         className="delete-button"
         type="button"

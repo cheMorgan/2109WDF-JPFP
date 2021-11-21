@@ -1,5 +1,6 @@
 /* eslint-disable quotes */
 import Axios from "axios";
+import { _setError } from "./error";
 
 const SET_PROJECTS = "SET_PROJECTS";
 const CREATE_PROJECT = "CREATE_PROJECT";
@@ -66,7 +67,7 @@ export const createProject = (project, history) => {
       dispatch(_createProject(created));
       history.push("/projects");
     } catch (err) {
-      console.error(err);
+      dispatch(_setError(err));
     }
   };
 };

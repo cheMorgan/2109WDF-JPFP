@@ -8,7 +8,8 @@ const EachProject = (props) => {
 
   return (
     <div className="oneProject">
-      <Link to={`/projects/${project.id}`}>{project.title}</Link>
+      <h2>{project.title}</h2>
+      <Link to={`/projects/${project.id}`}>See more</Link>
       <p>Deadline: {date.slice(0, 10)}</p>
       <button
         className="delete-button"

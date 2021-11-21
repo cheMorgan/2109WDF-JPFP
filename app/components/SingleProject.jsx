@@ -70,6 +70,7 @@
 // // when navigating to /projects/:id
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchSingleProject } from "../redux/singleProject";
 import { fetchSingleRobot } from "../redux/singleRobot";
 import ProjectForm from "./ProjectForm";
@@ -97,44 +98,40 @@ class SingleProject extends React.Component {
     const date = this.props.project.deadline || "";
 
     const robots = this.props.project.robots || [];
-    console.log("props inside singleProject", this.props);
+
     return (
       <div>
-        {this.state.clicked ? (
-          <ProjectForm {...this.props} />
-        ) : (
-          <div>
-            <div className="single-project">
-              <h1>{title}</h1>
-              <p>Deadline : {date.slice(0, 10)}</p>
-              <p>Priority: {priority}</p>
-              <p>{description}</p>
-              <p>Completion Status: {completed ? "Complete" : "In progress"}</p>
-            </div>
-            <div className="single-project-robots">
-              {robots.length === 0 ? (
-                <p>There's no one on this! Fix it!</p>
-              ) : (
-                robots.map((robot) => (
-                  <RobotsAssignedTo
-                    robot={robot}
-                    key={robot.id}
-                    project={this.props.project}
-                    history={this.props.history}
-                  />
-                ))
-              )}
-              <button type="button" onClick={this.handleClick}>
-                Edit
-              </button>
-            </div>
-            {/* <ProjectUpdateForm
-          ownProps={this.props}
-          projectId={this.props.match.params.id}
-          history={this.props.history}
-        /> */}
+        <div>
+          <div className="single-project">
+            <h1>{title}</h1>
+            <p>Deadline : {date.slice(0, 10)}</p>
+            <p>Priority: {priority}</p>
+            <p>{description}</p>
+            <p>Completion Status: {completed ? "Complete" : "In progress"}</p>
           </div>
-        )}
+          <div className="single-project-robots">
+            {robots.length === 0 ? (
+              <p>There's no one on this! Fix it!</p>
+            ) : (
+              robots.map((robot) => (
+                <RobotsAssignedTo
+                  robot={robot}
+                  key={robot.id}
+                  project={this.props.project}
+                  history={this.props.history}
+                />
+              ))
+            )}
+            <Link
+              to={{
+                pathname: `/projects/update/${this.props.project.id}`,
+                state: { project: this.props.project },
+              }}
+            >
+              <button type="button">Edit</button>
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

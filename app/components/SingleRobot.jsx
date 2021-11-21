@@ -51,19 +51,14 @@ class SingleRobot extends React.Component {
             ))
           )}
         </div>
-        <Link to={`/robots/update/${robot.id}`}>Update</Link>
+        <Link to={`/robots/update/${robot.id}`}>
+          <button type="button">Update</button>
+        </Link>
       </div>
     );
   }
 }
-{
-  /* <ProjectsAssignedTo
-  history={this.props.history}
-  project={project}
-  robot={robot}
-  key={project.id}
-/> */
-}
+
 // If robot has no projects, put the link to add?
 const mapState = (state) => {
   return {
@@ -78,20 +73,3 @@ const mapDispatch = (dispatch, { history }) => {
 };
 
 export default connect(mapState, mapDispatch)(SingleRobot);
-/*
-<div id="single-robot">
-      <img src={robot.imageUrl} />
-      <h1>{robot.name}</h1>
-      <p>{robot.fuelType}</p>
-      <p>{robot.fuelLevel}</p>
-      {robot.projects.length !== 0 ? (
-        <ul>
-          {robot.projects.map((project) => (
-            <li key={project.id}>{project.title}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>Give em' some work!</p>
-      )}
-    </div>
-*/

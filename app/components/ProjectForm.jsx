@@ -21,12 +21,15 @@ class ProjectForm extends React.Component {
     console.log("renderProjectForm");
     if (this.props.match.params.id) {
       this.props.setProject(+this.props.match.params.id);
+      this.setState({
+        ...this.props.location.state.project,
+      });
     }
   }
   componentDidUpdate(prevProps) {
     if (prevProps.project.id !== this.props.project.id) {
       this.setState({
-        ...this.props.project,
+        ...this.props.location.state.project,
       });
     }
   }
@@ -54,7 +57,9 @@ class ProjectForm extends React.Component {
     }
   }
   render() {
+    console.log(this.props);
     const { title, deadline, priority, description, completed } = this.state;
+    console.log("State", this.state);
     const { handleChange, handleSubmit } = this;
     return (
       <div className="form">
@@ -62,13 +67,7 @@ class ProjectForm extends React.Component {
           <label htmlFor="project-title">Project title:</label>
           <input name="title" value={title} onChange={handleChange} />
           <label hmtlFor="deadline">Deadline</label>
-          <input
-            type="date"
-            name="deadline"
-            value={deadline}
-            min="2021-11-19"
-            onChange={handleChange}
-          />
+          <input name="deadline" value={deadline} onChange={handleChange} />
           <label htmlFor="priority">Priority (1-10):</label>
           <input
             type="number"
@@ -98,6 +97,7 @@ class ProjectForm extends React.Component {
           ) : null}
           <button type="submit">Submit</button>
         </form>
+        <div className="error">{this.props.error}</div>
       </div>
     );
   }
@@ -106,6 +106,7 @@ class ProjectForm extends React.Component {
 const mapState = (state) => {
   return {
     project: state.singleProject,
+    error: state.error,
   };
 };
 
@@ -114,7 +115,7 @@ const mapDispatch = (dispatch, { history }) => {
   return {
     createProject: (project) => dispatch(createProject(project, history)),
     setProject: (id) => dispatch(fetchSingleProject(id)),
-    updateProject: (project) => dispatch(updateProject(project)),
+    updateProject: (project) => dispatch(updateProject(project, history)),
   };
 };
 

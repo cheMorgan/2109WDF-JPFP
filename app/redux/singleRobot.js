@@ -25,8 +25,6 @@ export const unassign = (robot, history) => {
         `/api/robots/${robot.id}`,
         robot
       );
-      console.log("robot", robot);
-      console.log("update", updated);
       dispatch(_unassign(updated, robot));
       history.push(`/robots/${robot.id}`);
     } catch (err) {

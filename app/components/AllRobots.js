@@ -50,6 +50,7 @@ export class AllRobots extends React.Component {
                 handleClick={this.handleClick}
                 handleDelete={this.handleDelete}
               />
+              <button type="button">Edit</button>
             </div>
           ))}
         </div>

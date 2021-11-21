@@ -24,6 +24,7 @@ const Routes = () => {
           <Route path="/robots/:id" component={SingleRobot} />
           <Route exact path="/projects" component={AllProjects} />
           <Route path="/projects/add" component={ProjectForm} />
+          <Route path="/projects/update/:id" component={ProjectForm} />
           <Route path="/projects/:id" component={SingleProject} />
         </Switch>
       </div>

@@ -1,7 +1,6 @@
 /* eslint-disable quotes */
 const { green, red } = require("chalk");
 const { db, Project, Robot } = require("./server/db");
-
 const seed = async () => {
   try {
     await db.sync({ force: true });
@@ -24,14 +23,14 @@ const seed = async () => {
     // PROJECTS
     const wonderbot = await Project.create({
       title: "wonderbot",
-      deadline: new Date(2021, 10, 21),
+      deadline: "2021/12/21",
       priority: 10,
       description:
         "It has four kitchen spoons atop its head, which it uses like the blades on a helicopter to fly. Its head is protected by a large cup, with its two eyes peeking out from underneath. It has a small, fragile neck, with a tiny body protected by a small bowl. It also possess three long, wiry limbs which can be used as hands or to create pictures for visual communication.",
     });
     const upgrades = await Project.create({
       title: "upgrades",
-      deadline: new Date(2021, 10, 21),
+      deadline: "2021/12/21",
       priority: 7,
       description: "ehhh make em look better",
     });

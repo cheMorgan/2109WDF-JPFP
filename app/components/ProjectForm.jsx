@@ -49,7 +49,7 @@ class ProjectForm extends React.Component {
       this.props.updateProject({
         ...this.state,
         id: +this.props.match.params.id,
-      }); //dispatch for updating project
+      });
     } else {
       this.props.createProject({ ...this.state }); // dispatch for creating project
     }

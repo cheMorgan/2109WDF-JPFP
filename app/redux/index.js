@@ -1,12 +1,15 @@
 import { combineReducers } from "redux";
+
 import projectsReducer from "./projects";
 import robotsReducer from "./robots";
-import robotReducer from "./singleRobot";
+import singleProjectReducer from "./singleProject";
+import singleRobotReducer from "./singleRobot";
 
 const appReducer = combineReducers({
   projects: projectsReducer,
   robots: robotsReducer,
-  singleRobot: robotReducer,
+  singleProject: singleProjectReducer,
+  singleRobot: singleRobotReducer,
 });
 
 export default appReducer;

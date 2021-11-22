@@ -1,10 +1,35 @@
+/* eslint-disable quotes */
 import Axios from "axios";
 
 const SET_PROJECTS = "SET_PROJECTS";
-export const setProjects = (projects) => {
+const CREATE_PROJECT = "CREATE_PROJECT";
+const DELETE_PROJECT = "DELETE_PROJECT";
+const UPDATE_PROJECT = "UPDATE_PROJECT";
+
+const setProjects = (projects) => {
   return {
     type: SET_PROJECTS,
     projects,
+  };
+};
+const _createProject = (project) => {
+  return {
+    type: CREATE_PROJECT,
+    project,
+  };
+};
+
+const _updateProject = (project) => {
+  return {
+    type: UPDATE_PROJECT,
+    project,
+  };
+};
+
+const _deleteProject = (id) => {
+  return {
+    type: DELETE_PROJECT,
+    id,
   };
 };
 
@@ -18,6 +43,45 @@ export const fetchProjects = () => {
     }
   };
 };
+
+export const updateProject = (project, history) => {
+  return async (dispatch) => {
+    try {
+      const { data: updated } = await Axios.put(
+        `/api/projects/${project.id}`,
+        project
+      );
+      dispatch(_updateProject(updated));
+      history.push(`/projects/${project.id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const createProject = (project, history) => {
+  return async (dispatch) => {
+    try {
+      const { data: created } = await Axios.post("/api/projects", project);
+      dispatch(_createProject(created));
+      history.push("/projects");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const deleteProject = (id) => {
+  return async (dispatch) => {
+    try {
+      await Axios.delete(`/api/projects/${id}`);
+      dispatch(_deleteProject(id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+};
+
 const initialState = [];
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
@@ -25,6 +89,14 @@ export default function projectsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_PROJECTS:
       return action.projects;
+    case CREATE_PROJECT:
+      return [...state, action.project];
+    case UPDATE_PROJECT:
+      return state.map((project) =>
+        project.id === action.project.id ? action.project : project
+      );
+    case DELETE_PROJECT:
+      return state.filter((project) => project.id !== action.id);
     default:
       return state;
   }

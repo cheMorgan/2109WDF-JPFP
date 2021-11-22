@@ -5,6 +5,9 @@ import AllProjects from "./AllProjects";
 import Nav from "./Nav.jsx";
 import Main from "./Main";
 import SingleRobot from "./SingleRobot";
+import SingleProject from "./SingleProject";
+import ProjectForm from "./ProjectForm";
+import RobotForm from "./RobotForm";
 
 const Routes = () => {
   return (
@@ -14,8 +17,13 @@ const Routes = () => {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/robots" component={AllRobots} />
+          <Route exact path="/robots/add" component={RobotForm} />
+          <Route exact path="/robots/update/:id" component={RobotForm} />
           <Route path="/robots/:id" component={SingleRobot} />
-          <Route path="/projects" component={AllProjects} />
+          <Route exact path="/projects" component={AllProjects} />
+          <Route path="/projects/add" component={ProjectForm} />
+          <Route path="/projects/update/:id" component={ProjectForm} />
+          <Route path="/projects/:id" component={SingleProject} />
         </Switch>
       </div>
     </Router>

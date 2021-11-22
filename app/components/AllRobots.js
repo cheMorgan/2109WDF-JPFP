@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchRobots } from "../redux/robots";
-import SingleRobot from "./SingleRobot";
-import { Link } from "react-router-dom";
+import { deleteRobot, fetchRobots } from "../redux/robots";
 import { fetchSingleRobot } from "../redux/singleRobot";
-import Robot from "./Robot";
+import EachBot from "./EachBot";
+import { Link } from "react-router-dom";
 
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -12,8 +11,8 @@ import Robot from "./Robot";
 export class AllRobots extends React.Component {
   constructor() {
     super();
-
     this.handleClick = this.handleClick.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   componentDidMount() {
     this.props.setRobots();
@@ -21,18 +20,29 @@ export class AllRobots extends React.Component {
   handleClick(id) {
     this.props.setRobot(id);
   }
+  handleDelete(id) {
+    this.props.deleteRobot(id);
+  }
+
   render() {
-    const { robots, robot } = this.props;
+    const { robots } = this.props;
     return (
       <div>
+        <Link to="/robots/add">
+          <button type="button" className="add-button">
+            Add Robot
+          </button>
+        </Link>
         <h1 className="title">All Robots</h1>
         <div className="thing-container">
-          {robots.map((oneRobot) => (
-            <Robot
-              key={oneRobot.id}
-              robot={oneRobot}
-              handleClick={this.handleClick}
-            />
+          {robots.map((robot) => (
+            <div key={robot.id}>
+              <EachBot
+                robot={robot}
+                handleClick={this.handleClick}
+                handleDelete={this.handleDelete}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -51,6 +61,7 @@ const mapDispatch = (dispatch) => {
   return {
     setRobots: () => dispatch(fetchRobots()),
     setRobot: (id) => dispatch(fetchSingleRobot(id)),
+    deleteRobot: (id) => dispatch(deleteRobot(id)),
   };
 };
 

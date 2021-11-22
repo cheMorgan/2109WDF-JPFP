@@ -49,19 +49,19 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 #### Frontend
 
 - Write a component to display a single robot with the following information:
-  - [ ] The robot's name, image, fuelType, fuelLevel
-  - [ ] The names of all their assigned projects (or a helpful message if they don't have any)
-- [ ] Display the appropriate robot when the url matches `/robots/:robotId`
+  - [x] The robot's name, image, fuelType, fuelLevel
+  - [x] The names of all their assigned projects (or a helpful message if they don't have any)
+- [x] Display the appropriate robot when the url matches `/robots/:robotId`
 - [x] Clicking on a robot from the all-robots view should navigate to show that robot in the single-robot view
 
 - Write a component to display a single project with the following information:
-  - [ ] The project's title, deadline, priority, description
-  - [ ] A list of the names of all robots in that project (or a helpful message if it doesn't have any robots)
-- [ ] Display the appropriate project's info when the url matches `/projects/:projectId`
-- [ ] Clicking on a project from the all-projects view should navigate to show that project in the single-project view
+  - [x] The project's title, deadline, priority, description
+  - [x] A list of the names of all robots in that project (or a helpful message if it doesn't have any robots)
+- [x] Display the appropriate project's info when the url matches `/projects/:projectId`
+- [x] Clicking on a project from the all-projects view should navigate to show that project in the single-project view
 
-- [ ] Clicking on the name of a robot in the single-project view should navigate to show that robot in the single-robot view
-- [ ] Clicking on the name of a project in the single-robot view should navigate to show that project in the single-project view
+- [x] Clicking on the name of a robot in the single-project view should navigate to show that robot in the single-robot view
+- [x] Clicking on the name of a project in the single-robot view should navigate to show that project in the single-project view
 
 #### Backend
 
@@ -78,23 +78,23 @@ Congrats! You have completed your second vertical slice! Make sure to `commit -m
 
 #### Frontend
 
-- [ ] Write a component to display a form for adding a new robot that contains _at least_ an input for name
-- [ ] Display this component as part of the all-robots view, alongside the list of robots
+- [x] Write a component to display a form for adding a new robot that contains _at least_ an input for name
+- [x] Display this component as part of the all-robots view, alongside the list of robots
 - Submitting the form with valid data should:
 
-  - [ ] Make an AJAX request that causes the new robot to be persisted in the database
-  - [ ] Add the new robot to the list of robots without needing to refresh the page
+  - [x] Make an AJAX request that causes the new robot to be persisted in the database
+  - [x] Add the new robot to the list of robots without needing to refresh the page
 
-- [ ] Write a component to display a form for adding a new project that contains _at least_ an input for title
-- [ ] Display this component as part of the all-projects view, alongside the list of projects
+- [x] Write a component to display a form for adding a new project that contains _at least_ an input for title
+- [x] Display this component as part of the all-projects view, alongside the list of projects
 - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes the new project to be saved to the database
-  - [ ] Add the new project to the list of projects without needing to refresh the page
+  - [x] Make an AJAX request that causes the new project to be saved to the database
+  - [x] Add the new project to the list of projects without needing to refresh the page
 
 #### Backend
 
-- [ ] Write a route to add a new robot
-- [ ] Write a route to add a new project
+- [x] Write a route to add a new robot
+- [x] Write a route to add a new project
 
 Congrats! You have completed your third vertical slice! Make sure to `commit -m "Feature: Add Robot and Project"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 
@@ -106,21 +106,21 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 #### Frontend
 
-- [ ] In the all-robots view, include an `X` button next to each robot
+- [x] In the all-robots view, include an `X` button next to each robot
 - Clicking the `X` button should:
 
-  - [ ] Make an AJAX request that causes that robot to be removed from database
-  - [ ] Remove the robot from the list of robots without needing to refresh the page
+  - [x] Make an AJAX request that causes that robot to be removed from database
+  - [x] Remove the robot from the list of robots without needing to refresh the page
 
-- [ ] In the all-projects view, include an `X` button next to each project
+- [x] In the all-projects view, include an `X` button next to each project
 - Clicking the `X` button should:
-  - [ ] Make an AJAX request that causes that project to be removed from database
-  - [ ] Remove the project from the list of projects without needing to refresh the page
+  - [x] Make an AJAX request that causes that project to be removed from database
+  - [x] Remove the project from the list of projects without needing to refresh the page
 
 #### Backend
 
-- [ ] Write a route to remove a robot (based on its id)
-- [ ] Write a route to remove a project (based on its id)
+- [x] Write a route to remove a robot (based on its id)
+- [x] Write a route to remove a project (based on its id)
 
 Congrats! You have completed your fourth vertical slice! Make sure to `commit -m "Feature: Remove Robot and Project"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 
@@ -132,25 +132,25 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 #### Frontend
 
-- [ ] Write a component to display a form updating _at least_ a robot's name and fuelLevel
-- [ ] Display this component EITHER as part of the single-robot view, or as its own view
+- [x] Write a component to display a form updating _at least_ a robot's name and fuelLevel
+- [x] Display this component EITHER as part of the single-robot view, or as its own view
 - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that robot to be updated in the database
-  - [ ] Update the robot in the current view without needing to refresh the page
-- [ ] In the single-robot view, display an `Unassign` button next to each of its projects, which unassigns it from that project (in the database as well as this view)
+  - [x] Make an AJAX request that causes that robot to be updated in the database
+  - [x] Update the robot in the current view without needing to refresh the page
+- [x] In the single-robot view, display an `Unassign` button next to each of its projects, which unassigns it from that project (in the database as well as this view)
 
-- [ ] Write a component to display a form updating _at least_ a project's title and completion status
-- [ ] Display this component EITHER as part of the single-project view, or as its own view
+- [x] Write a component to display a form updating _at least_ a project's title and completion status
+- [x] Display this component EITHER as part of the single-project view, or as its own view
 - Submitting the form with valid data should:
-  - [ ] Make an AJAX request that causes that project to be updated in the database
-  - [ ] Update the project in the current view without needing to refresh the page
-- [ ] In the single-project view, display an `Unassign` button next to each robot assigned to it, which unassigns that robot (in the database as well as this view)
-- [ ] In the single-project view, display a `Complete` button, which marks the project as completed (in the database as well as this view)
+  - [x] Make an AJAX request that causes that project to be updated in the database
+  - [x] Update the project in the current view without needing to refresh the page
+- [x] In the single-project view, display an `Unassign` button next to each robot assigned to it, which unassigns that robot (in the database as well as this view)
+- [x] In the single-project view, display a `Complete` button, which marks the project as completed (in the database as well as this view)
 
 #### Backend
 
-- [ ] Write a route to update an existing project
-- [ ] Write a route to update an existing robot
+- [x] Write a route to update an existing project
+- [x] Write a route to update an existing robot
 
 Congrats! You have completed your fifth vertical slice! Make sure to `commit -m "Feature: Update Robot and Project"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 

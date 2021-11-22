@@ -8,10 +8,15 @@ const EachProject = (props) => {
   return (
     <div className="oneProject">
       <h2>{project.title}</h2>
+      <p>
+        {props.project.completed
+          ? "This project is completed"
+          : "This project is currently in progress"}
+      </p>
       <Link to={`/projects/${project.id}`}>See more</Link>
       <p>Deadline: {date.slice(0, 10)}</p>
       <button
-        className="delete-button"
+        className="delete-button-proj"
         type="button"
         onClick={() => props.handleDelete(project.id)}
       >

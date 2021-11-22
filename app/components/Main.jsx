@@ -3,11 +3,8 @@ import React from "react";
 const Main = () => {
   return (
     <main>
-      <h1>
-        Welcome to StackBot Project Management: your robot employees are
-        awaiting assignments!
-      </h1>
-      <p>This seems like a nice place to get started with some Routes!</p>
+      <h1>Welcome to StackBot Project Management</h1>
+      <p>Navigate to see our employees and what they're working on!</p>
     </main>
   );
 };

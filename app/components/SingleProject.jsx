@@ -41,40 +41,50 @@ class SingleProject extends React.Component {
           <div className="single-project">
             <h1>{title}</h1>
             <p>Deadline : {date.slice(0, 10)}</p>
-            <p>Priority: {priority}</p>
-            <p>{description}</p>
+            <p className={this.props.project.priority > 8 ? "urgent" : ""}>
+              Priority: {priority}
+            </p>
+            <p id="description">{description}</p>
             <p>Completion Status: {completed ? "Complete" : "In progress"}</p>
+            <label htmlFor="completed">Mark as complete </label>
             <input
               type="checkbox"
               name="completed"
               onChange={this.handleChange}
               checked={!!completed}
             />
-          </div>
-          <div className="single-project-robots">
-            {robots.length === 0 ? (
-              <p>There's no one on this! Fix it!</p>
-            ) : (
-              robots.map((robot) => (
-                <div className="projects-assigned-to" key={robot.id}>
-                  <h1>{robot.name}</h1>
-                  <button
-                    type="button"
-                    onClick={() => this.unassignButton(robot.id)}
-                  >
-                    Unassign
-                  </button>
-                </div>
-              ))
-            )}
             <Link
               to={{
                 pathname: `/projects/update/${this.props.project.id}`,
                 state: { project: this.props.project },
               }}
             >
-              <button type="button">Edit</button>
+              <button type="button" id="edit-button">
+                Edit
+              </button>
             </Link>
+          </div>
+          <div className="single-project-robots">
+            {robots.length === 0 ? (
+              <p>There's no one working on this!</p>
+            ) : (
+              robots.map((robot) => (
+                <div className="projects-assigned-to" key={robot.id}>
+                  <div>
+                    <h1>{robot.name}</h1>
+                    <img src={robot.imageUrl} />
+                    <p>{robot.fuelType}</p>
+                    <p>{robot.fuelLevel}</p>
+                    <button
+                      type="button"
+                      onClick={() => this.unassignButton(robot.id)}
+                    >
+                      Unassign
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

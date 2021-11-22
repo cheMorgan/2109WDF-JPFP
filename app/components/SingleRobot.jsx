@@ -21,22 +21,37 @@ class SingleRobot extends React.Component {
     const { robot } = this.props;
     const projects = robot.projects || [];
     return (
-      <div id="robot-page">
-        <div id="single-robot">
-          <img src={robot.imageUrl} className="robot-image" />
-          <h1>{robot.name}</h1>
-          <p>{robot.fuelType}</p>
-          <p>{robot.fuelLevel}</p>
+      <div>
+        <div className="robot-bio">
+          <img src={robot.imageUrl} className="robot-image" id="robo-image" />
+          <h1 className="robo-bio">{robot.name}</h1>
+          <p className="robo-bio">This robot runs on {robot.fuelType} fuel</p>
+          <p className="robo-bio">Fuel level: {robot.fuelLevel}</p>
+          <Link
+            to={{
+              pathname: `/robots/update/${robot.id}`,
+              state: {
+                robot: this.props.robot,
+              },
+            }}
+          >
+            <button type="button">Edit</button>
+          </Link>
         </div>
-        <div className="single-robot-projects">
+        <div>
+          <h2>Currently working on: </h2>
+        </div>
+        <div className="robot-projects">
           {projects.length === 0 ? (
-            <p>Give this bot some work!</p>
+            <p>This bot is on break</p>
           ) : (
             projects.map((project) => (
-              <div className="projects-assigned-to" key={project.id}>
+              <div key={project.id} className="robot-project-item">
                 <h1>{project.title}</h1>
                 <p>{project.completed}</p>
-                <p>{project.priority}</p>
+                <p className={project.priority > 8 ? "urgent" : ""}>
+                  Priority: {project.priority}
+                </p>
                 <p>{project.description}</p>
                 <button
                   type="button"
@@ -48,16 +63,6 @@ class SingleRobot extends React.Component {
             ))
           )}
         </div>
-        <Link
-          to={{
-            pathname: `/robots/update/${robot.id}`,
-            state: {
-              robot: this.props.robot,
-            },
-          }}
-        >
-          <button type="button">Update</button>
-        </Link>
       </div>
     );
   }

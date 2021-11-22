@@ -54,14 +54,21 @@ class RobotForm extends React.Component {
         <form id="new-robot-form" onSubmit={handleSubmit}>
           <label htmlFor="robotName">Name: </label>
           <input name="name" value={name} onChange={handleChange} />
+          <label htmlFor="fuelLevel">Fuel Level </label>
+          <input
+            name="fuelLevel"
+            value={fuelLevel}
+            onChange={handleChange}
+            type="number"
+            min="0"
+            max="100"
+          />
           <label htmlFor="fuelType">Choose a fuel type </label>
           <select name="fuelType" id="fuelTypeSelector" onChange={handleChange}>
             <option value="electric">Electric</option>
             <option value="diesel">Diesel</option>
             <option value="gas">Gas</option>
           </select>
-          <label htmlFor="fuelLevel">Fuel Level </label>
-          <input name="fuelLevel" value={fuelLevel} onChange={handleChange} />
           <button type="submit">Submit</button>
         </form>
       </div>

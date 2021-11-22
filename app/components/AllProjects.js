@@ -21,20 +21,22 @@ export class AllProjects extends React.Component {
   render() {
     const { projects } = this.props;
     return (
-      <div className="thing-contianer">
+      <div>
         <Link to="/projects/add">
           <button type="button" className="add-button">
             Add a project
           </button>
         </Link>
         <h1>All Projects</h1>
-        {projects.map((project) => (
-          <EachProject
-            project={project}
-            key={project.id}
-            handleDelete={this.handleDelete}
-          />
-        ))}
+        <div className="all-projects-view">
+          {projects.map((project) => (
+            <EachProject
+              project={project}
+              key={project.id}
+              handleDelete={this.handleDelete}
+            />
+          ))}
+        </div>
       </div>
     );
   }

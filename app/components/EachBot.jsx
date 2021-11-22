@@ -4,13 +4,17 @@ import { Link } from "react-router-dom";
 const EachBot = (props) => {
   const { robot } = props;
   return (
-    <div className="oneBot">
-      <div className="text-each-bot">
-        <Link to={`/robots/${robot.id}`}>{robot.name}</Link>
-        <p>{robot.fuelType}</p>
-        <p>{robot.fuelLevel}</p>
+    <div>
+      <div className="oneBot">
+        <div className="text-each-bot">
+          <Link to={`/robots/${robot.id}`} className="name-links">
+            {robot.name}
+          </Link>
+          <p>{robot.fuelType}</p>
+          <p>Fuel level: {robot.fuelLevel}</p>
+        </div>
+        <img src={robot.imageUrl} className="image-each-bot" />
       </div>
-      <img src={robot.imageUrl} className="image-each-bot" />
       <button
         className="delete-button"
         type="button"

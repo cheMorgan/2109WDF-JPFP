@@ -21,7 +21,7 @@ const seed = async () => {
       imageUrl: "https://pbs.twimg.com/media/ESXEfBtX0AA46c0.jpg",
     });
     const walle = await Robot.create({
-      name: "Wall-e",
+      name: "WALL-E",
       imageUrl:
         "https://cdn.vox-cdn.com/thumbor/zhOkikt7GAARV1YDAYwNQQzeopw=/0x0:1200x808/1400x1400/filters:focal(475x111:667x303):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/55061013/wall_ecover.0.jpg",
     });

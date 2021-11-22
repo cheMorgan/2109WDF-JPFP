@@ -117,6 +117,7 @@ class SingleProject extends React.Component {
               type="checkbox"
               name="completed"
               onChange={this.handleChange}
+              checked={!!completed}
             />
           </div>
           <div className="single-project-robots">

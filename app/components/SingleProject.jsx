@@ -71,27 +71,32 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { updateProject } from "../redux/projects";
 import { fetchSingleProject } from "../redux/singleProject";
-import { fetchSingleRobot } from "../redux/singleRobot";
+import { fetchSingleRobot, unassign } from "../redux/singleRobot";
 import ProjectForm from "./ProjectForm";
 import ProjectUpdateForm from "./ProjectUpdateForm";
 import RobotsAssignedTo from "./RobotsAssignedTo";
 
 class SingleProject extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clicked: false,
-    };
+  constructor() {
+    super();
+    this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     this.props.setProject(+this.props.match.params.id);
   }
-  handleClick() {
-    this.setState({
-      clicked: !this.state.clicked,
+  handleChange() {
+    this.props.updateProject({
+      ...this.props.project,
+      completed: !this.props.project.completed,
     });
+  }
+  handleClick(id) {
+    const obj = { ...this.props.project, robotId: id };
+    this.props.unassign(obj);
+    this.props.setProject(+this.props.match.params.id);
   }
   render() {
     const { title, priority, description, completed } = this.props.project;
@@ -108,6 +113,11 @@ class SingleProject extends React.Component {
             <p>Priority: {priority}</p>
             <p>{description}</p>
             <p>Completion Status: {completed ? "Complete" : "In progress"}</p>
+            <input
+              type="checkbox"
+              name="completed"
+              onChange={this.handleChange}
+            />
           </div>
           <div className="single-project-robots">
             {robots.length === 0 ? (
@@ -119,6 +129,7 @@ class SingleProject extends React.Component {
                   key={robot.id}
                   project={this.props.project}
                   history={this.props.history}
+                  handleClick={this.handleClick}
                 />
               ))
             )}
@@ -142,9 +153,11 @@ const mapState = (state) => {
     project: state.singleProject,
   };
 };
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
     setProject: (id) => dispatch(fetchSingleProject(id)),
+    updateProject: (project) => dispatch(updateProject(project, history)),
+    unassign: (project) => dispatch(updateProject(project, history)),
   };
 };
 

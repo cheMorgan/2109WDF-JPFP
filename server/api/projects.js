@@ -30,7 +30,7 @@ router.post("/", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const project = await Project.findByPk(req.params.id);
+    const project = await Project.findByPk(req.params.id, { include: Robot });
     console.log("Express", req.body);
     if (req.body.robotId) {
       await project.removeRobot(req.body.robotId);

@@ -48,10 +48,12 @@ export const fetchProjects = () => {
 export const updateProject = (project, history) => {
   return async (dispatch) => {
     try {
+      console.log("project", project);
       const { data: updated } = await Axios.put(
         `/api/projects/${project.id}`,
         project
       );
+      console.log("updated", updated);
       dispatch(_updateProject(updated));
       history.push(`/projects/${project.id}`);
     } catch (error) {

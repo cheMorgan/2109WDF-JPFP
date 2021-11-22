@@ -59,7 +59,7 @@ class ProjectForm extends React.Component {
   render() {
     console.log(this.props);
     const { title, deadline, priority, description, completed } = this.state;
-    console.log("State", this.state);
+
     const { handleChange, handleSubmit } = this;
     return (
       <div className="form">
@@ -67,7 +67,13 @@ class ProjectForm extends React.Component {
           <label htmlFor="project-title">Project title:</label>
           <input name="title" value={title} onChange={handleChange} />
           <label hmtlFor="deadline">Deadline</label>
-          <input name="deadline" value={deadline} onChange={handleChange} />
+          <input
+            type="date"
+            name="deadline"
+            value={deadline}
+            min="2021-11-19"
+            onChange={handleChange}
+          />
           <label htmlFor="priority">Priority (1-10):</label>
           <input
             type="number"

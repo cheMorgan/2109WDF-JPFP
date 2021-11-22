@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 
 const EachBot = (props) => {
   const { robot } = props;
-
   return (
     <div className="oneBot">
-      {/* <h1>{robot.name}</h1> */}
       <div className="text-each-bot">
         <Link to={`/robots/${robot.id}`}>{robot.name}</Link>
         <p>{robot.fuelType}</p>
@@ -23,5 +21,4 @@ const EachBot = (props) => {
     </div>
   );
 };
-// had a click handler on Link that would set single robot. Unnecessary
 export default EachBot;

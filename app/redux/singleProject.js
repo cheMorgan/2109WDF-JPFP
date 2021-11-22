@@ -1,9 +1,9 @@
 import Axios from "axios";
 
 const SET_PROJECT = "SET_PROJECT";
-// const UPDATE_PROJECT = "UPDATE_PROJECT";
+const UPDATE_PROJECT = "UPDATE_PROJECT";
 const UNASSIGN_PROJECT = "UNASSIGN";
-import { UPDATE_PROJECT } from "./projects";
+// import { UPDATE_PROJECT } from "./projects";
 
 export const setProject = (project) => {
   return {
@@ -19,12 +19,12 @@ export const _unassignProject = (project) => {
   };
 };
 
-// export const _updateProject = (project) => {
-//   return {
-//     type: UPDATE_PROJECT,
-//     project,
-//   };
-// };
+export const _updateProject = (project) => {
+  return {
+    type: UPDATE_PROJECT,
+    project,
+  };
+};
 
 export const fetchSingleProject = (id) => {
   return async (dispatch) => {
@@ -60,12 +60,12 @@ export default function singleProjectReducer(state = initialState, action) {
       return action.project;
     case UPDATE_PROJECT:
       return action.project;
-    // case UNASSIGN_PROJECT:
-    //   const newArr = state.robots.filter(
-    //     (robot) => robot.id !== action.project.robotId
-    //   );
-    //   action.project.robots = newArr;
-    //   return action.project;
+    case UNASSIGN_PROJECT:
+      const newArr = state.robots.filter(
+        (robot) => robot.id !== action.project.robotId
+      );
+      action.project.robots = newArr;
+      return action.project;
     default:
       return state;
   }

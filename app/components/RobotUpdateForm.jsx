@@ -16,13 +16,13 @@ class RobotUpdateForm extends React.Component {
   componentDidMount() {
     this.props.setRobot(+this.props.match.params.id);
   }
-  // componentDidUpdate(props) {
-  //   if (props.robot.id !== this.props.robot.id) {
-  //     this.setState({
-  //       ...this.props.robot,
-  //     });
-  //   }
-  // }
+  componentDidUpdate(props) {
+    if (props.robot.id !== this.props.robot.id) {
+      this.setState({
+        ...this.props.robot,
+      });
+    }
+  }
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value,

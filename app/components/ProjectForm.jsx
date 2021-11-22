@@ -1,4 +1,3 @@
-import { render } from "enzyme";
 import React from "react";
 import { connect } from "react-redux";
 import { createProject, updateProject } from "../redux/projects";
@@ -18,7 +17,6 @@ class ProjectForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
-    console.log("renderProjectForm");
     if (this.props.match.params.id) {
       this.props.setProject(+this.props.match.params.id);
       this.setState({

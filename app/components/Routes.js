@@ -6,10 +6,8 @@ import Nav from "./Nav.jsx";
 import Main from "./Main";
 import SingleRobot from "./SingleRobot";
 import SingleProject from "./SingleProject";
-import Form from "./Form";
-import NewRobotForm from "./NewRobotForm";
-import RobotUpdateForm from "./RobotUpdateForm";
 import ProjectForm from "./ProjectForm";
+import RobotForm from "./RobotForm";
 
 const Routes = () => {
   return (
@@ -19,8 +17,8 @@ const Routes = () => {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/robots" component={AllRobots} />
-          <Route exact path="/robots/add" component={NewRobotForm} />
-          <Route exact path="/robots/update/:id" component={RobotUpdateForm} />
+          <Route exact path="/robots/add" component={RobotForm} />
+          <Route exact path="/robots/update/:id" component={RobotForm} />
           <Route path="/robots/:id" component={SingleRobot} />
           <Route exact path="/projects" component={AllProjects} />
           <Route path="/projects/add" component={ProjectForm} />

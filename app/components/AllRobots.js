@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { deleteRobot, fetchRobots } from "../redux/robots";
 import { fetchSingleRobot } from "../redux/singleRobot";
 import EachBot from "./EachBot";
-import SingleRobot from "./SingleRobot";
 import { Link } from "react-router-dom";
 
 // Notice that we're exporting the AllRobots component twice. The named export
@@ -14,7 +13,6 @@ export class AllRobots extends React.Component {
     super();
     this.handleClick = this.handleClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.addRobotsButton = this.addRobotsButton.bind(this);
   }
   componentDidMount() {
     this.props.setRobots();
@@ -25,21 +23,16 @@ export class AllRobots extends React.Component {
   handleDelete(id) {
     this.props.deleteRobot(id);
   }
-  addRobotsButton() {
-    this.props.history.push("/robots/add");
-  }
 
   render() {
     const { robots } = this.props;
     return (
       <div>
-        <button
-          type="button"
-          className="add-button"
-          onClick={this.addRobotsButton}
-        >
-          Add Robot
-        </button>
+        <Link to="/robots/add">
+          <button type="button" className="add-button">
+            Add Robot
+          </button>
+        </Link>
         <h1 className="title">All Robots</h1>
         <div className="thing-container">
           {robots.map((robot) => (
@@ -49,7 +42,6 @@ export class AllRobots extends React.Component {
                 handleClick={this.handleClick}
                 handleDelete={this.handleDelete}
               />
-              <button type="button">Edit</button>
             </div>
           ))}
         </div>

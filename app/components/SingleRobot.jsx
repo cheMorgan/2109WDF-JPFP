@@ -2,7 +2,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { updateRobot } from "../redux/robots";
 import { fetchSingleRobot, unassignRobot } from "../redux/singleRobot";
 
 class SingleRobot extends React.Component {
@@ -49,7 +48,14 @@ class SingleRobot extends React.Component {
             ))
           )}
         </div>
-        <Link to={`/robots/update/${robot.id}`}>
+        <Link
+          to={{
+            pathname: `/robots/update/${robot.id}`,
+            state: {
+              robot: this.props.robot,
+            },
+          }}
+        >
           <button type="button">Update</button>
         </Link>
       </div>

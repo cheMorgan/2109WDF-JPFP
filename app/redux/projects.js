@@ -4,7 +4,7 @@ import Axios from "axios";
 const SET_PROJECTS = "SET_PROJECTS";
 const CREATE_PROJECT = "CREATE_PROJECT";
 const DELETE_PROJECT = "DELETE_PROJECT";
-export const UPDATE_PROJECT = "UPDATE_PROJECT";
+const UPDATE_PROJECT = "UPDATE_PROJECT";
 
 const setProjects = (projects) => {
   return {

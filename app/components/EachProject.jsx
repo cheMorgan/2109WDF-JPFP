@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProjectUpdateForm from "./ProjectUpdateForm";
 
 const EachProject = (props) => {
   const { project } = props;

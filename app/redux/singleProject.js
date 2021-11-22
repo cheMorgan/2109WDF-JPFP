@@ -1,12 +1,21 @@
+/* eslint-disable quotes */
 import Axios from "axios";
 
 const SET_PROJECT = "SET_PROJECT";
 const UPDATE_PROJECT = "UPDATE_PROJECT";
 const UNASSIGN_PROJECT = "UNASSIGN_PROJECT";
+const ASSIGN_PROJECT = "ASSIGN_PROJECT";
 
 export const setProject = (project) => {
   return {
     type: SET_PROJECT,
+    project,
+  };
+};
+
+export const _updateProject = (project) => {
+  return {
+    type: UPDATE_PROJECT,
     project,
   };
 };
@@ -19,10 +28,10 @@ export const _unassignProject = (project, prevProject) => {
   };
 };
 
-export const _updateProject = (project) => {
+const _assignProject = (something) => {
   return {
-    type: UPDATE_PROJECT,
-    project,
+    type: ASSIGN_PROJECT,
+    something,
   };
 };
 
@@ -41,7 +50,7 @@ export const unassignProject = (project, history) => {
   return async (dispatch) => {
     try {
       const { data: updated } = await Axios.put(
-        `/api/projects/${project.id}`,
+        `/api/projects/${project.id}/unassign`,
         project
       );
       dispatch(_unassignProject(updated, project));
@@ -51,6 +60,11 @@ export const unassignProject = (project, history) => {
     }
   };
 };
+
+export const assignProject = (projectId, robotId) => {
+  return async (dispatch) => {};
+};
+
 export const updateProject = (project, history) => {
   return async (dispatch) => {
     try {

@@ -20,6 +20,7 @@ class SingleRobot extends React.Component {
   render() {
     const { robot } = this.props;
     const projects = robot.projects || [];
+
     return (
       <div>
         <div className="robot-bio">

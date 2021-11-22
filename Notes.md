@@ -60,3 +60,8 @@ createRobot
   What have I learned from this? Unless you're mapping, probably don't need to do nested renders. Probably
 
 // this.props.updateRobot({ ...this.state, id: +this.props.match.params.id }); // without the braces, won't work; need to explicitly send an obj
+
+Making a request to api/robots/:id does things
+making a request to api/robots/:id/project/:id
+
+put robots/:id/projects only projects for robot 1

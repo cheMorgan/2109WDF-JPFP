@@ -1,6 +1,5 @@
 /* eslint-disable quotes */
 import Axios from "axios";
-import { _setError } from "./error";
 
 const SET_PROJECTS = "SET_PROJECTS";
 const CREATE_PROJECT = "CREATE_PROJECT";
@@ -48,12 +47,10 @@ export const fetchProjects = () => {
 export const updateProject = (project, history) => {
   return async (dispatch) => {
     try {
-      console.log("project", project);
       const { data: updated } = await Axios.put(
         `/api/projects/${project.id}`,
         project
       );
-      console.log("updated", updated);
       dispatch(_updateProject(updated));
       history.push(`/projects/${project.id}`);
     } catch (error) {
@@ -68,8 +65,8 @@ export const createProject = (project, history) => {
       const { data: created } = await Axios.post("/api/projects", project);
       dispatch(_createProject(created));
       history.push("/projects");
-    } catch (err) {
-      dispatch(_setError(err));
+    } catch (error) {
+      console.error(error);
     }
   };
 };

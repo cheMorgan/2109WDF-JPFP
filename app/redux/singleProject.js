@@ -2,8 +2,7 @@ import Axios from "axios";
 
 const SET_PROJECT = "SET_PROJECT";
 const UPDATE_PROJECT = "UPDATE_PROJECT";
-const UNASSIGN_PROJECT = "UNASSIGN";
-// import { UPDATE_PROJECT } from "./projects";
+const UNASSIGN_PROJECT = "UNASSIGN_PROJECT";
 
 export const setProject = (project) => {
   return {
@@ -12,10 +11,11 @@ export const setProject = (project) => {
   };
 };
 
-export const _unassignProject = (project) => {
+export const _unassignProject = (project, prevProject) => {
   return {
     type: UNASSIGN_PROJECT,
     project,
+    prevProject,
   };
 };
 
@@ -37,6 +37,20 @@ export const fetchSingleProject = (id) => {
   };
 };
 
+export const unassignProject = (project, history) => {
+  return async (dispatch) => {
+    try {
+      const { data: updated } = await Axios.put(
+        `/api/projects/${project.id}`,
+        project
+      );
+      dispatch(_unassignProject(updated, project));
+      history.push(`/projects/${project.id}`);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
 export const updateProject = (project, history) => {
   return async (dispatch) => {
     try {
@@ -44,7 +58,7 @@ export const updateProject = (project, history) => {
         `/api/projects/${project.id}`,
         project
       );
-      dispatch(_unassignProject(updated));
+      dispatch(_updateProject(updated));
       history.push(`/projects/${project.id}`);
     } catch (error) {
       console.error(error);
@@ -61,10 +75,9 @@ export default function singleProjectReducer(state = initialState, action) {
     case UPDATE_PROJECT:
       return action.project;
     case UNASSIGN_PROJECT:
-      const newArr = state.robots.filter(
-        (robot) => robot.id !== action.project.robotId
+      action.project.robots = action.project.robots.filter(
+        (robot) => robot.id !== action.prevProject.robotId
       );
-      action.project.robots = newArr;
       return action.project;
     default:
       return state;

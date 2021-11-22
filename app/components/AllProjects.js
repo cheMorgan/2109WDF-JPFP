@@ -22,6 +22,12 @@ export class AllProjects extends React.Component {
     const { projects } = this.props;
     return (
       <div className="thing-contianer">
+        <Link to="/projects/add">
+          <button type="button" className="add-button">
+            Add a project
+          </button>
+        </Link>
+        <h1>All Projects</h1>
         {projects.map((project) => (
           <EachProject
             project={project}
@@ -29,7 +35,6 @@ export class AllProjects extends React.Component {
             handleDelete={this.handleDelete}
           />
         ))}
-        <Link to="/projects/add">Add a project</Link>
       </div>
     );
   }

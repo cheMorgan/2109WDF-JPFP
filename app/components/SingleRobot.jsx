@@ -2,7 +2,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchSingleRobot, unassign } from "../redux/singleRobot";
+import { updateRobot } from "../redux/robots";
+import { fetchSingleRobot, unassignRobot } from "../redux/singleRobot";
 
 class SingleRobot extends React.Component {
   constructor(props) {
@@ -19,7 +20,6 @@ class SingleRobot extends React.Component {
 
   render() {
     const { robot } = this.props;
-    // console.log(robot);
     const projects = robot.projects || [];
     return (
       <div id="robot-page">
@@ -57,7 +57,6 @@ class SingleRobot extends React.Component {
   }
 }
 
-// If robot has no projects, put the link to add?
 const mapState = (state) => {
   return {
     robot: state.singleRobot,
@@ -66,7 +65,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch, { history }) => {
   return {
     setRobot: (id) => dispatch(fetchSingleRobot(id)),
-    unassign: (obj) => dispatch(unassign(obj, history)),
+    unassign: (robot) => dispatch(unassignRobot(robot, history)),
   };
 };
 

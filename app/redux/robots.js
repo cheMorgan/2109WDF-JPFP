@@ -5,7 +5,7 @@ import { setRobot } from "./singleRobot";
 const SET_ROBOTS = "SET_ROBOTS";
 const CREATE_ROBOT = "CREATE_ROBOT";
 const DELETE_ROBOT = "DELETE_ROBOT";
-const UPDATE_ROBOT = "UPDATE_ROBOT";
+// const UPDATE_ROBOT = "UPDATE_ROBOT";
 
 export const setRobots = (robots) => {
   return {
@@ -28,12 +28,12 @@ const _deleteRobot = (id) => {
   };
 };
 
-const _updateRobot = (robot) => {
-  return {
-    type: UPDATE_ROBOT,
-    robot,
-  };
-};
+// const _updateRobot = (robot) => {
+//   return {
+//     type: UPDATE_ROBOT,
+//     robot,
+//   };
+// };
 
 export const fetchRobots = () => {
   return async (dispatch) => {
@@ -57,14 +57,22 @@ export const createRobot = (robot, history) => {
   };
 };
 
-export const updateRobot = (robot, history) => {
-  return async (dispatch) => {
-    const { data: updated } = await Axios.put(`/api/robots/${robot.id}`, robot);
-
-    dispatch(_updateRobot(updated));
-    history.push(`/robots/${robot.id}`);
-  };
-};
+// export const updateRobot = (robot, history) => {
+//   return async (dispatch) => {
+//     try {
+//       console.log(robot);
+//       const { data: updated } = await Axios.put(
+//         `/api/robots/${robot.id}`,
+//         robot
+//       );
+//       console.log(updated);
+//       dispatch(_updateRobot(updated));
+//       history.push(`/robots/${robot.id}`);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+// };
 
 export const deleteRobot = (id, history) => {
   return async (dispatch) => {
@@ -88,10 +96,10 @@ export default function robotsReducer(state = initialState, action) {
       return [...state, action.robot];
     case DELETE_ROBOT:
       return state.filter((robot) => robot.id !== action.id);
-    case UPDATE_ROBOT:
-      return state.map((robot) =>
-        robot.id === action.robot.id ? action.robot : robot
-      );
+    // case UPDATE_ROBOT:
+    //   return state.map((robot) =>
+    //     robot.id === action.robot.id ? action.robot : robot
+    //   );
     default:
       return state;
   }

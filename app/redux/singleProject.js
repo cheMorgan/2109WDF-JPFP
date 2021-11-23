@@ -4,7 +4,6 @@ import Axios from "axios";
 const SET_PROJECT = "SET_PROJECT";
 const UPDATE_PROJECT = "UPDATE_PROJECT";
 const UNASSIGN_PROJECT = "UNASSIGN_PROJECT";
-const ASSIGN_PROJECT = "ASSIGN_PROJECT";
 
 export const setProject = (project) => {
   return {
@@ -25,13 +24,6 @@ export const _unassignProject = (project, prevProject) => {
     type: UNASSIGN_PROJECT,
     project,
     prevProject,
-  };
-};
-
-const _assignProject = (something) => {
-  return {
-    type: ASSIGN_PROJECT,
-    something,
   };
 };
 
@@ -59,10 +51,6 @@ export const unassignProject = (project, history) => {
       console.error(error);
     }
   };
-};
-
-export const assignProject = (projectId, robotId) => {
-  return async (dispatch) => {};
 };
 
 export const updateProject = (project, history) => {

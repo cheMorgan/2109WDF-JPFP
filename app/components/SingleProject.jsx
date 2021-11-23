@@ -7,7 +7,6 @@ import {
   fetchSingleProject,
   unassignProject,
 } from "../redux/singleProject";
-// import RobotsAssignedTo from "./RobotsAssignedTo";
 
 class SingleProject extends React.Component {
   constructor() {
@@ -26,7 +25,6 @@ class SingleProject extends React.Component {
   }
   unassignButton(id) {
     const obj = { ...this.props.project, robotId: id };
-    console.log("Inside SingleProject", obj);
     this.props.unassign(obj);
   }
   render() {

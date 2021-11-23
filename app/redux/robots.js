@@ -59,12 +59,10 @@ export const createRobot = (robot, history) => {
 export const updateRobot = (robot, history) => {
   return async (dispatch) => {
     try {
-      console.log(robot);
       const { data: updated } = await Axios.put(
         `/api/robots/${robot.id}`,
         robot
       );
-      console.log(updated);
       dispatch(_updateRobot(updated));
       history.push(`/robots/${robot.id}`);
     } catch (error) {
@@ -73,7 +71,7 @@ export const updateRobot = (robot, history) => {
   };
 };
 
-export const deleteRobot = (id, history) => {
+export const deleteRobot = (id) => {
   return async (dispatch) => {
     try {
       await Axios.delete(`/api/robots/${id}`);

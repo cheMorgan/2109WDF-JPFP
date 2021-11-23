@@ -6,8 +6,8 @@ router.get("/", async (req, res, next) => {
   try {
     const projects = await Project.findAll();
     res.send(projects);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 // GET /api/projects/:id
@@ -15,8 +15,8 @@ router.get("/:id", async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.id, { include: Robot });
     res.send(project);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 // POST /api/projects
@@ -28,23 +28,9 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// PUT /api/projects/:projectId/assign/:robotId
-router.put("/:projectId/assign/:robotId", async (req, res, next) => {
-  try {
-    const project = await Project.findByPk(req.params.projectId, {
-      include: Robot,
-    });
-    await project.addRobot(req.params.robotId);
-    res.send(project);
-  } catch (error) {
-    next(error);
-  }
-});
-
 // PUT /api/projects/:id/unassign
 router.put("/:id/unassign", async (req, res, next) => {
   try {
-    console.log("URI", req.originalUrl);
     const project = await Project.findByPk(req.params.id, { include: Robot });
     if (req.body.robotId) {
       await project.removeRobot(req.body.robotId);
@@ -60,7 +46,6 @@ router.put("/:id/unassign", async (req, res, next) => {
 // PUT /api/projects/:id
 router.put("/:id", async (req, res, next) => {
   try {
-    console.log("URI", req.originalUrl);
     const project = await Project.findByPk(req.params.id, { include: Robot });
     res.send(await project.update(req.body));
   } catch (error) {
@@ -72,7 +57,7 @@ router.delete("/:id", async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.id);
     await project.destroy();
-    res.send("project");
+    res.send(project);
   } catch (error) {
     next(error);
   }

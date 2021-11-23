@@ -17,7 +17,6 @@ class RobotForm extends React.Component {
   componentDidMount() {
     if (this.props.match.params.id) {
       this.props.setRobot(+this.props.match.params.id);
-      console.log(this.props.location.state.robot);
       this.setState({
         ...this.props.location.state.robot,
       });
@@ -90,15 +89,3 @@ const mapDispatch = (dispatch, { history }) => {
 };
 
 export default connect(mapState, mapDispatch)(RobotForm);
-
-/*
-To incorporate an assign-to-project selector
-Make a selector that has all the available projects in the DB (ones not marked as completed)
-Would therefore need to fetch all projects so that we can map over them for the select options
-Would be part of the edit project view
-Have an 'add to robot' button that would be separate from the submit form. Possibly add it to the robot without doing the history.push
-
-Send a request
-
-
-*/

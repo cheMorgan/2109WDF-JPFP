@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createProject, updateProject } from "../redux/projects";
+import { fetchRobots } from "../redux/robots";
 import { fetchSingleProject } from "../redux/singleProject";
 
 class ProjectForm extends React.Component {
@@ -51,12 +52,12 @@ class ProjectForm extends React.Component {
         id: +this.props.match.params.id,
       });
     } else {
-      this.props.createProject({ ...this.state }); // dispatch for creating project
+      this.props.createProject({ ...this.state });
     }
   }
   render() {
-    console.log(this.props);
     const { title, deadline, priority, description, completed } = this.state;
+    const { robots } = this.props.location.state || [];
 
     const { handleChange, handleSubmit } = this;
     return (
@@ -101,7 +102,25 @@ class ProjectForm extends React.Component {
           ) : null}
           <button type="submit">Submit</button>
         </form>
-        <div className="error">{this.props.error}</div>
+        <div>
+          <h2>Robots assigned to {title}</h2>
+          <div className="single-project-robots">
+            {robots === undefined || robots.length === 0 ? (
+              <p>There's no one working on this!</p>
+            ) : (
+              robots.map((robot) => (
+                <div className="projects-assigned-to" key={robot.id}>
+                  <div>
+                    <h1>{robot.name}</h1>
+                    <img src={robot.imageUrl} />
+                    <p>{robot.fuelType}</p>
+                    <p>{robot.fuelLevel}</p>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
       </div>
     );
   }
@@ -110,16 +129,16 @@ class ProjectForm extends React.Component {
 const mapState = (state) => {
   return {
     project: state.singleProject,
-    error: state.error,
+    allRobots: state.robots,
   };
 };
 
 const mapDispatch = (dispatch, { history }) => {
-  //may want to leave history to the individual components
   return {
     createProject: (project) => dispatch(createProject(project, history)),
     setProject: (id) => dispatch(fetchSingleProject(id)),
     updateProject: (project) => dispatch(updateProject(project, history)),
+    setRobots: () => dispatch(fetchRobots()),
   };
 };
 

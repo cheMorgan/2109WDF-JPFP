@@ -6,8 +6,8 @@ router.get("/", async (req, res, next) => {
   try {
     const robots = await Robot.findAll();
     res.send(robots);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
@@ -15,8 +15,8 @@ router.get("/:id", async (req, res, next) => {
   try {
     const robot = await Robot.findByPk(req.params.id, { include: Project });
     res.send(robot);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 

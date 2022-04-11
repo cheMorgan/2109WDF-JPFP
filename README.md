@@ -1,5 +1,5 @@
-# Junior Phase Final Project
-
+# Robots
+![Robots](https://raw.githubusercontent.com/cheMorgan/Robots/main/unnamed.png)
 ##
 
 [Video Walkthrough](https://youtu.be/rs6bg5PzO_0)
